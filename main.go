@@ -114,7 +114,7 @@ func getResc(w http.ResponseWriter, req *http.Request) {
 	headers.Set("Location", fmt.Sprintf("/resource/get-resource?id=%d", a))
 
 	if a == 1 {
-		fmt.Fprint(w, str_data, int_data)
+		fmt.Fprint(w, resc_str_data, resc_int_data)
 	} else {
 		fmt.Fprint(w, "Wrong Id caught")
 	}
