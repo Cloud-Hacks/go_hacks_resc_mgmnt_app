@@ -1,24 +1,38 @@
 module resource-service
 
-go 1.15
+go 1.18
 
 require (
-	cloud.google.com/go/storage v1.10.0
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-contrib/logger v0.0.2
 	github.com/gin-gonic/gin v1.7.4
-	github.com/go-openapi/spec v0.20.4 // indirect
-	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/openziti/sdk-golang v0.16.53
 	github.com/rs/zerolog v1.23.0
-	github.com/spf13/viper v1.9.0
-	github.com/swaggo/swag v1.7.6
-	golang.org/x/net v0.0.0-20211209124913-491a49abca63 // indirect
-	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8 // indirect
-	golang.org/x/tools v0.1.8 // indirect
-	google.golang.org/api v0.56.0
-	google.golang.org/appengine v1.6.7
 	gopkg.in/go-playground/validator.v9 v9.29.1
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+)
+
+require (
+	github.com/BurntSushi/toml v0.3.1 // indirect
+	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/go-playground/locales v0.13.0 // indirect
+	github.com/go-playground/universal-translator v0.17.0 // indirect
+	github.com/go-playground/validator/v10 v10.4.1 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/google/go-cmp v0.5.6 // indirect
+	github.com/json-iterator/go v1.1.11 // indirect
+	github.com/kr/text v0.2.0 // indirect
+	github.com/leodido/go-urn v1.2.0 // indirect
+	github.com/mattn/go-isatty v0.0.14 // indirect
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
+	github.com/stretchr/testify v1.7.1 // indirect
+	github.com/ugorji/go/codec v1.1.7 // indirect
+	golang.org/x/crypto v0.0.0-20220321153916-2c7772ba3064 // indirect
+	golang.org/x/sys v0.0.0-20220330033206-e17cdc41300f // indirect
+	google.golang.org/protobuf v1.28.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
