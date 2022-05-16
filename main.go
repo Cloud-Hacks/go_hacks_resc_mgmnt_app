@@ -90,6 +90,7 @@ func setupRoutes(r *gin.Engine) {
 
 }
 
+// get Resource handler to handle the route
 func getResc(w http.ResponseWriter, req *http.Request) {
 	a, _ := strconv.Atoi(req.URL.Query().Get("id"))
 
@@ -120,12 +121,12 @@ func getResc(w http.ResponseWriter, req *http.Request) {
 
 }
 
+// use generic func to provide smooth response
 func getData[V compararble, b int32 | float64 | string](Z map[V]b) []b{
 
 	var x_data []b
 	for _, v := range Z {
 		x_data = append(x_data, v)
 	}
-
 	return x_data
 }
