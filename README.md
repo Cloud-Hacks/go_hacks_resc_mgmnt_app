@@ -1,6 +1,7 @@
-# Resource-Mgmt-App
+# Resource-Management-App
 
-![c4](https://user-images.githubusercontent.com/94980910/145726737-943dad92-18df-45a5-a053-5973b18ef005.png)
+![h25](https://user-images.githubusercontent.com/11625672/168671979-39c58c99-3cd2-45b5-bda0-bea722563289.png)
+
 
 # 🧠 Inspiration
 Inspired by CERN Collaboration tracks and generic functions
@@ -27,11 +28,8 @@ To integrate with UI and setup kubernetes cluster
 
 ## ScreenShots
 
+![h22](https://user-images.githubusercontent.com/11625672/168672115-6b7dab29-4dc0-4a62-a07c-f118fdcc15df.png)
 
-![c4](https://user-images.githubusercontent.com/94980910/145726737-943dad92-18df-45a5-a053-5973b18ef005.png)
+![h23](https://user-images.githubusercontent.com/11625672/168672171-e9538431-069f-4e54-bae0-2df5b81b7d73.png)
 
-
-![c5](https://user-images.githubusercontent.com/94980910/145726749-7cf221db-28d0-4e4a-92c3-9e197bc019be.png)
-
-
-![c6](https://user-images.githubusercontent.com/94980910/145726754-46bacd09-8fb2-41f6-a0d4-81b75778dd79.png)
+![h24](https://user-images.githubusercontent.com/11625672/168672228-154baac7-9ff2-4a7d-8cd0-94de9fb97d66.png)
