@@ -99,18 +99,17 @@ func getResc(w http.ResponseWriter, req *http.Request) {
 		"created_by": 68,
 	}
 
-	headers := make(http.Header)
-	headers.Set("Location", fmt.Sprintf("/resource/get-resource?id=%d", a))
+	resc_str_data := getData(str_data)
+	resc_int_data := getData(int_data)
 
 	if a == 1 {
-		fmt.Fprint(w, str_data, int_data)
+		fmt.Fprint(w, resc_str_data, resc_int_data)
 	} else {
 		fmt.Fprint(w, "Wrong Id caught")
 	}
 
 }
 
-/*
 // use generic func to provide smooth response
 func getData[V compararble, b int32 | float64 | string](Z map[V]b) []b{
 
@@ -120,4 +119,4 @@ func getData[V compararble, b int32 | float64 | string](Z map[V]b) []b{
 	}
 	return x_data
 }
-*/
+
