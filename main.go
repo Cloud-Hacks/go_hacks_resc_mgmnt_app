@@ -3,10 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
-	"os/signal"
 	"strconv"
-	"syscall"
 	"time"
 
 	"resource-service/src/controller"
@@ -52,16 +49,10 @@ func startServer(r *gin.Engine) {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	go func() {
-		if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatal().Msgf("Listen: %s\n", err)
-		}
-	}()
+	if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		log.Fatal().Msgf("Listen: %s\n", err)
+	}
 
-	quit := make(chan os.Signal)
-
-	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
-	<-quit
 	log.Info().Msg("Shutting down server...\n")
 
 	log.Info().Msg("Server exiting\n")
@@ -107,20 +98,19 @@ func getResc(w http.ResponseWriter, req *http.Request) {
 		"id":         1,
 		"created_by": 68,
 	}
-	resc_str_data := getData(str_data)
-	resc_int_data := getData(int_data)
 
 	headers := make(http.Header)
 	headers.Set("Location", fmt.Sprintf("/resource/get-resource?id=%d", a))
 
 	if a == 1 {
-		fmt.Fprint(w, resc_str_data, resc_int_data)
+		fmt.Fprint(w, str_data, int_data)
 	} else {
 		fmt.Fprint(w, "Wrong Id caught")
 	}
 
 }
 
+/*
 // use generic func to provide smooth response
 func getData[V compararble, b int32 | float64 | string](Z map[V]b) []b{
 
@@ -130,3 +120,4 @@ func getData[V compararble, b int32 | float64 | string](Z map[V]b) []b{
 	}
 	return x_data
 }
+*/
