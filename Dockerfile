@@ -1,6 +1,6 @@
 ## Build
 
-FROM golang:1.16-alpine
+FROM golang:1.18-alpine
 
 WORKDIR /res-mgmt
 
@@ -10,10 +10,10 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o /web4api
+RUN go build -o /web4app
 
 ## Deploy
 
 EXPOSE 8080
 
-CMD [ "/web4api" ]
+CMD [ "/web4app" ]
