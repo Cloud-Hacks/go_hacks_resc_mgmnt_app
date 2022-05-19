@@ -2,7 +2,9 @@ package repository
 
 import (
 	"fmt"
+	"time"
 
+	"resource-service/dbmodel"
 	"resource-service/src/model"
 	"resource-service/src/service/dto"
 )
@@ -19,6 +21,28 @@ var img_resource = []model.Image{
 
 //ResourceRepository- Resource Repository
 type ResourceRepository struct{}
+
+//AddResource - Store Resource into DB
+func (resourceRepository *ResourceRepository) AddResource(data dto.RequestAddResourceDTO) (string, error) {
+	//To store the resource
+	var resource model.Resource
+	resource.Title = data.Title
+	resource.Category = data.Category
+	resource.Status = data.Status
+	resource.Types = data.Type
+	resource.Content = data.Content
+	resource.FileLink = data.FileLink
+	resource.CreatedBy = data.CreatedBy
+	resource.CreatedAt = time.Now().UTC().Unix()
+	resource.UpdatedBy = data.CreatedBy
+	resource.UpdatedAt = time.Now().UTC().Unix()
+
+	//Create the record in Resource Table
+	if err := dbmodel.SetupDB().Create(&resource).Error; err != nil {
+		return "", err
+	}
+	return "Success", nil
+}
 
 //GetResource - Get Resource based on ID from DB
 func (resourceRepository *ResourceRepository) GetResource(data dto.RequestGetResourceDTO) (dto.ResponseGetResourceDTO, error) {
@@ -44,4 +68,23 @@ func (resourceRepository *ResourceRepository) GetResource(data dto.RequestGetRes
 		}
 	}
 	return dto.ResponseGetResourceDTO{}, fmt.Errorf("No Data")
+}
+
+func (rescRepo *ResourceRepository) Getfile_imgLink(data dto.RequestGetLinkDTO) (dto.ResponseGetLinksDTO, error) {
+
+	for _, q := range res {
+		for _, r := range img_resource {
+			if q.ID == data.ID && q.ID == r.ResourceId {
+
+				//Return response
+				return dto.ResponseGetLinksDTO{
+
+					FileLink: q.FileLink,
+
+					ImageLinks: r.Link,
+				}, nil
+			}
+		}
+	}
+	return dto.ResponseGetLinksDTO{}, fmt.Errorf("No Data")
 }

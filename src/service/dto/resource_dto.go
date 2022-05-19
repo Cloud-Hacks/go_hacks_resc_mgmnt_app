@@ -18,6 +18,10 @@ type RequestGetResourceDTO struct {
 	ID int `json:"id" validate:"min=0"`
 }
 
+type RequestGetLinkDTO struct {
+	ID int `form:"id"`
+}
+
 //ResponseGetListOfResourcesDTO - DTO for Get Resource Response
 type ResponseGetResourceDTO struct {
 	ID         int    `json:"id"`
@@ -30,4 +34,9 @@ type ResponseGetResourceDTO struct {
 	Content    string `json:"content"`
 	UpdatedBy  int    `json:"updated_by"`
 	UpdatedAt  int64  `json:"updated_at"`
+}
+
+type ResponseGetLinksDTO struct {
+	ImageLinks string `json:"image_links"`
+	FileLink   string `json:"file_link"`
 }
