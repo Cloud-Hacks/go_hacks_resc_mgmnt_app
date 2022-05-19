@@ -6,6 +6,9 @@ import (
 	"strconv"
 	"time"
 
+	_ "github.com/lib/pq"
+
+	"resource-service/dbmodel"
 	"resource-service/src/controller"
 	applogger "resource-service/utils/logging"
 
@@ -23,6 +26,12 @@ import (
 
 var log *zerolog.Logger = applogger.GetInstance()
 var configFilePath *string
+var cfg dbmodel.Config
+
+type application struct {
+	config dbmodel.Config
+	logger *zerolog.Logger
+}
 
 func main() {
 
@@ -33,13 +42,21 @@ func main() {
 	corsConfig.AllowAllOrigins = true
 	r.Use(cors.New(corsConfig))
 
+	app := &application{
+		config: cfg,
+		logger: log,
+	}
+
+	db := dbmodel.SetupDB()
+	db.AutoMigrate()
+
 	setupLogger(r)
 	setupRoutes(r)
-	startServer(r)
+	startServer(r, app)
 }
 
 // startServer - Start server
-func startServer(r *gin.Engine) {
+func startServer(r *gin.Engine, a *application) {
 
 	s := &http.Server{
 		Addr:           ":8080",
@@ -77,7 +94,9 @@ func setupRoutes(r *gin.Engine) {
 
 	http.HandleFunc("/resource/get-resource", getResc)
 	r.POST("/resource/login-user", l.LoginUser)
+	r.POST("/resource/add-resc", s.AddResource)
 	r.GET("/resource/get-resc", s.GetResource)
+	r.GET("/resource/get-resc-links", s.Getfile_imgLink)
 
 }
 
@@ -119,4 +138,3 @@ func getData[V compararble, b int32 | float64 | string](Z map[V]b) []b{
 	}
 	return x_data
 }
-
