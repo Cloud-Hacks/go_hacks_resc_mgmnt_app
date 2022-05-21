@@ -3,6 +3,47 @@
 ![h25](https://user-images.githubusercontent.com/11625672/168671979-39c58c99-3cd2-45b5-bda0-bea722563289.png)
 
 
+# Development
+
+In order to execute the program, you need to have `psql` installed in your system:
+
+Using Linux env:
+
+`sudo apt install postgresql` -> installs the `psql`
+
+`sudo -u postgres psql` -> sudo into user name as postgress
+
+`psql --version` -> checks version
+
+`export RESC_DB_DSN='postgres://USER_NAME:YOUR_PWD@localhost/DB_NAME'`
+`psql $RESC_DB_DSN `
+
+`psql --host=localhost --dbname=DB_NAME --username=USER_NAME`
+
+Then exec into that and create the table as below
+
+```
+CREATE TABLE IF NOT EXISTS resources (
+  id SERIAL PRIMARY KEY NOT NULL,
+  title varchar(255) NOT NULL,
+  category varchar(32) NOT NULL,
+  status varchar(15) NOT NULL,
+  types varchar(10) NOT NULL,
+  content text,
+  file_link varchar(255) DEFAULT NULL,
+  created_by int NOT NULL,
+  created_at bigint NOT NULL,
+  updated_by int NOT NULL,
+  updated_at bigint NOT NULL
+);
+```
+
+Steps to run the source code:
+
+`go mod tidy` -> Download the required dependencies
+
+`go run main.go` -> Runs the App
+
 # 🧠 Inspiration
 Inspired by CERN Collaboration tracks and generic functions
 
